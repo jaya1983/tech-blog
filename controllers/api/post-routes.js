@@ -2,6 +2,22 @@ const router = require("express").Router();
 const { Post, Comment, User } = require("../../models/");
 const withAuth = require("../../utils/auth");
 
+
+// get all posts
+router.get("/", (req, res) => {
+     Post.findAll({
+       attributes: ["id", "title", "body"],
+     })
+       .then((dbPostData) => {
+         res.json(dbPostData);
+       })
+       .catch((err) => {
+         console.log(err);
+         res.status(500).json(err);
+       });
+   });
+   
+
 router.post("/", withAuth, (req, res) => {
     const body = req.body;
     console.log(req.session.userId);
