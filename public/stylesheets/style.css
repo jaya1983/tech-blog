@@ -193,7 +193,6 @@
     border: 1px solid var(--dark);
     border-radius: var(--border-radius);
   }
-  
   .min-100-vh {
     min-height: 100vh;
   }
